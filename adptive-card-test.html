@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Adaptive card test</title>
+		<script src="https://unpkg.com/adaptivecards@1.2.6/dist/adaptivecards.min.js"></script>
+		<style>
+			.ac-adaptiveCard { border: 1px solid black; }
+		</style>
+	</head>
+	<body>
+		<script>		
+			// Author a card
+			// In practice you'll probably get this from a service
+			// see http://adaptivecards.io/samples/ for inspiration
+			var card = {
+			  "type": "AdaptiveCard",
+			  "body": [
+				{
+				  "columns": [
+					{
+					  "width": "2.6",
+					  "items": [
+						{
+						  "altText": "Awesome",
+						  "horizontalAlignment": "center",
+						  "url": "https://statics.retailservices.teams.cdn.office.net/ui/static/praise/develop/all/assets/badges/en-GB/AwesomeBadge.ce6dd1dd36.png",
+						  "height": "auto",
+						  "type": "Image"
+						}
+					  ],
+					  "type": "Column"
+					},
+					{
+					  "width": "6",
+					  "items": [
+						{
+						  "isSubtle": true,
+						  "size": "small",
+						  "text": "John Doe sent praise to",
+						  "wrap": true,
+						  "type": "TextBlock"
+						},
+						{
+						  "size": "medium",
+						  "text": "Jane Doe",
+						  "weight": "bolder",
+						  "wrap": true,
+						  "spacing": "small",
+						  "type": "TextBlock"
+						},
+						{
+						  "text": "",
+						  "wrap": true,
+						  "spacing": "small",
+						  "type": "TextBlock"
+						}
+					  ],
+					  "spacing": "medium",
+					  "type": "Column"
+					}
+				  ],
+				  "spacing": "large",
+				  "separator": true,
+				  "type": "ColumnSet"
+				}
+			  ],
+			  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+			  "version": "1.0"
+			};
+
+			// Create an AdaptiveCard instance
+			var adaptiveCard = new AdaptiveCards.AdaptiveCard();
+
+			// Set its hostConfig property unless you want to use the default Host Config
+			// Host Config defines the style and behavior of a card
+			adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
+				fontFamily: "Segoe UI, Helvetica Neue, sans-serif"
+				// More host config options
+			});
+
+			// Parse the card payload
+			adaptiveCard.parse(card);
+
+			// Render the card to an HTML element:
+			var renderedCard = adaptiveCard.render();
+
+			// And finally insert it somewhere in your page:
+			document.body.appendChild(renderedCard);
+		</script>
+	</body>
+</html>
